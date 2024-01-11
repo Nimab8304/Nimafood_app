@@ -50,6 +50,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layoutAnimation="@anim/recycler"
         android:background="?attr/colorSurface"
         android:id="@+id/recyvlerview"
         android:layout_width="match_parent"
