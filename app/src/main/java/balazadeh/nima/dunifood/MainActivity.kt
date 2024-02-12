@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
         }
 
 
-        firstRun()
 //        myAdapter = FoodAdapter(foodList.clone() as ArrayList<Food>, this)
 //        binding.recyvlerview.adapter = myAdapter
 //        binding.recyvlerview.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
