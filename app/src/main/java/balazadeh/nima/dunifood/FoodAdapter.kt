@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.view.DragEvent
 import android.view.LayoutInflater
+import android.view.RoundedCorner
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -13,8 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 
-class FoodAdapter(private val data: ArrayList<Food>, private val foodEvent: FoodEvents) :
-    RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
+class FoodAdapter(private val data: ArrayList<Food>, private val foodEvent: FoodEvents) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
 
     inner class FoodViewHolder(itemView: View, private val contex: Context) :
         RecyclerView.ViewHolder(itemView) {
