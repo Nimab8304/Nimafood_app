@@ -3,8 +3,10 @@ package balazadeh.nima.dunifood
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import balazadeh.nima.dunifood.Room.FoodDao
@@ -39,21 +41,22 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
             addNewFood()
         }
 
-//        binding.edtSearch.addTextChangedListener { editTextInput ->
-//            if (editTextInput!!.isNotEmpty()) {
-//                val cloneList = foodList.clone() as ArrayList<Food>
-//                val filterList = cloneList.filter { food ->
-//                    food.txtName.contains(editTextInput, true)
-//                }
-//                myAdapter.setData(filterList as ArrayList<Food>)
-//            } else {
-//                myAdapter.setData(foodList.clone() as ArrayList<Food>)
-//            }
-//        }
-//    }
-//
+
+        binding.edtSearch.addTextChangedListener { editTextInput->
+            searchOnDatabase(editTextInput)
+        }
 
 
+    }
+
+    private fun searchOnDatabase(editTextInput: Editable?) {
+        if (editTextInput!!.isNotEmpty()) {
+            val searchedData=foodDao.searchForFood(editTextInput.toString())
+            myAdapter.setData(ArrayList(searchedData))
+        } else {
+            val data=foodDao.getAllFoods()
+            myAdapter.setData(ArrayList(data))
+        }
     }
 
     private fun addNewFood() {
