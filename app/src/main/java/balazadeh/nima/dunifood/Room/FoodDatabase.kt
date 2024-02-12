@@ -8,6 +8,7 @@ import balazadeh.nima.dunifood.Food
 
 @Database(version = 1, exportSchema = false, entities = [Food::class])
 abstract class FoodDatabase : RoomDatabase() {
+
     abstract val foodDao: FoodDao
 
 
@@ -18,7 +19,7 @@ abstract class FoodDatabase : RoomDatabase() {
                 database = Room.databaseBuilder(
                     context.applicationContext,
                     FoodDatabase::class.java,
-                    "myDatabase.db"
+                    "FoodDatabase.db"
                 ).allowMainThreadQueries()
                     .build()
             }

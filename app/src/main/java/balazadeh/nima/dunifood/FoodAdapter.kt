@@ -1,8 +1,6 @@
 package balazadeh.nima.dunifood
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.view.DragEvent
 import android.view.LayoutInflater
 import android.view.RoundedCorner
 import android.view.View

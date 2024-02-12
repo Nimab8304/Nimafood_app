@@ -3,6 +3,8 @@ package balazadeh.nima.dunifood
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import balazadeh.nima.dunifood.Room.FoodDao
 import balazadeh.nima.dunifood.Room.FoodDatabase
 import balazadeh.nima.dunifood.databinding.ActivityMainBinding
@@ -10,7 +12,7 @@ import balazadeh.nima.dunifood.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
     private lateinit var binding: ActivityMainBinding
     private lateinit var myAdapter: FoodAdapter
-    lateinit var foodDao: FoodDao
+    lateinit var foodDao:FoodDao
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -22,12 +24,8 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
             sharedPreferences.edit().putBoolean("firstTime",false).apply()
         }
 
+        showAllData()
 
-
-//        myAdapter = FoodAdapter(foodList.clone() as ArrayList<Food>, this)
-//        binding.recyvlerview.adapter = myAdapter
-//        binding.recyvlerview.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-//
 //        binding.btnAdd.setOnClickListener {
 //            val dialog = AlertDialog.Builder(this).create()
 //            val dialogeBinding = DialogeAddItemBinding.inflate(layoutInflater)
@@ -135,8 +133,15 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
 
     }
 
+    private fun showAllData() {
+        val foodData=foodDao.getAllFoods()
+        myAdapter = FoodAdapter(ArrayList(foodData), this)
+        binding.recyvlerview.adapter = myAdapter
+        binding.recyvlerview.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+    }
+
     private fun firstRun() {
-        val foodList = arrayListOf<Food>(
+        val foodList = listOf(
             Food(
                 txtName = "Pepperoni",
                 txtPrice = "18",
