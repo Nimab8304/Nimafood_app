@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
             sharedPreferences.edit().putBoolean("firstTime",false).apply()
         }
 
-        //test
 
 
 //        myAdapter = FoodAdapter(foodList.clone() as ArrayList<Food>, this)
