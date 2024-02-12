@@ -18,6 +18,12 @@ interface FoodDao {
     @Delete
     fun remove(food: Food)
 
-//    @Query( )
-//    fun getAllFoods():List<Food>
+    @Query("SELECT * FROM food_table")
+    fun getAllFoods():List<Food>
+
+    @Query("DELETE FROM food_table")
+    fun deleteAll()
+
+    @Query("SELECT * FROM food_table WHERE txtName LIKE '%' || :search || '%'")
+    fun searchForFood(search:String):List<Food>
 }
