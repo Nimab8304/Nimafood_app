@@ -3,20 +3,25 @@ package balazadeh.nima.dunifood.Room
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import balazadeh.nima.dunifood.Food
 
 @Dao
 interface FoodDao {
-    @Insert
-    fun insert(food: Food)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertOrUpdate(food: Food)
+
+//    @Insert
+//    fun insert(food: Food)
 
     @Insert
     fun insertAll(data:List<Food>)
 
-    @Update
-    fun update(food: Food)
+//    @Update
+//    fun update(food: Food)
 
     @Delete
     fun remove(food: Food)

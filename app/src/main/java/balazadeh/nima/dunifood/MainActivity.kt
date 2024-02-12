@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
                 val urlImage = dialogeBinding.dialogImage.text.toString()
                 val newFood = Food(txtName = name, txtPrice = price, txtDistance = distance, txtCity = city, urlImage = urlImage, numOfRating = ratingNumber, raing = rating)
                 myAdapter.addFood(newFood)
-                foodDao.insert(newFood)
+                foodDao.insertOrUpdate(newFood)
                 binding.recyvlerview.scrollToPosition(0)
                 dialog.dismiss()
 
@@ -252,7 +252,7 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
                     )
                 myAdapter.update(newFood, position)
 
-                foodDao.update(newFood)
+                foodDao.insertOrUpdate(newFood)
                 dialog.dismiss()
             } else {
                 Toast.makeText(this, "لطفا تمام مقادیر را وارد کنید", Toast.LENGTH_LONG).show()
