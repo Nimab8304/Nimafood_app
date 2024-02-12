@@ -240,16 +240,19 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
                 val city = updateDialogBinding.dialogCity.text.toString()
 
                 val newFood =
-//                    Food(
-//                        name,
-//                        price,
-//                        distance,
-//                        city,
-//                        food.urlImage,
-//                        food.numOfRating,
-//                        food.raing
-//                    )
-//                myAdapter.update(newFood, position)
+                    Food(
+                        id = food.id,
+                        txtName = name,
+                        txtPrice = price,
+                        txtDistance = distance,
+                        txtCity = city,
+                        urlImage = food.urlImage,
+                        numOfRating = food.numOfRating,
+                        raing = food.raing
+                    )
+                myAdapter.update(newFood, position)
+
+                foodDao.update(newFood)
                 dialog.dismiss()
             } else {
                 Toast.makeText(this, "لطفا تمام مقادیر را وارد کنید", Toast.LENGTH_LONG).show()
